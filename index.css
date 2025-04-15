@@ -1,3 +1,6 @@
+body{
+   text-align: center;
+}
 .resistor1{
     background-color: burlywood;
     width: 200px;
@@ -5,14 +8,14 @@
     border-radius: 100px 0px 0px 100px;
 }
 #main{
-    margin-left: 300px;
-    margin-top: 50px;
+    width: 100%;
     display: flex;
+    justify-content: center;
 }
 .color{ 
     height: 300px;
     width: 100px;
-    background-color: crimson;
+    background-color: burlywood;
 }
 .espaco{
     height: 300px;
