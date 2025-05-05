@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <a href="calculadoraCores5F.html">Calcular 5 faixas</a><br>
+    <a href="index.html">Calcular com resistência</a>
+    <h1>4 faixas</h1>
+    <div id="main">
+        <div class="terminal"></div>
+        <div class="resistor1"></div>
+        <div id="cor1" class="color"></div>
+        <div class="espaco"></div>
+        <div id="cor2" class="color"></div>
+        <div class="espaco"></div>
+        <div id="cor3" class="color"></div>
+        <div class="espaco"></div>
+        <div class="espaco"></div>
+        <div id="tol" class="color" style="background-color: gold;">+/- 5%</div>
+        <div class="resistor2"></div>
+        <div class="terminal"></div>
+    </div><br>
+    <h1 id="req"></h1><br>
+    <table id="cores">
+        <tr>
+            <th class="cor" data-value="black" style="background-color: black;" data-ncor="0" data-mult="1">Preto</th>
+            <th class="cor" data-value="rgb(99, 67, 22)" style="background-color: rgb(99, 67, 22);" data-ncor="1" data-mult="10">Marrom</th>
+            <th class="cor" data-value="red" style="background-color: red;" data-ncor="2" data-mult="100">Vermelho</th>
+        </tr>
+        <tr>
+            <th class="cor" data-value="orange" style="background-color: orange;" data-ncor="3" data-mult="1000">Laranja</th>
+            <th class="cor" data-value="yellow" style="background-color: yellow;" data-ncor="4" data-mult="10000">Amarelo</th>
+            <th class="cor" data-value="green" style="background-color: green;" data-ncor="5" data-mult="100000">Verde</th>
+        </tr>
+        <tr>
+            <th class="cor" data-value="blue" style="background-color: blue;" data-ncor="6" data-mult="1000000">Azul</th>
+            <th class="cor" data-value="purple" style="background-color: purple;" data-ncor="7" data-mult="10000000">Violeta</th>
+            <th class="cor" data-value="gray" style="background-color: gray;" data-ncor="8" data-mult="">Cinza</th>
+            <th class="cor" data-value="white" style="background-color: white;" data-ncor="9" data-mult="">Branco</th>
+        </tr>
+    </table>
+    
+</body>
+<script>
+    let cores = document.querySelectorAll('#cores  .cor');
+    const cor1 = document.getElementById('cor1');
+    const cor2 = document.getElementById('cor2');
+    const cor3 = document.getElementById('cor3');
+    let contador = 1;
+    let resitencia = ''
+    cores.forEach(cor => {
+        cor.addEventListener('click',()=>{
+            let corValue = cor.dataset.value;
+            if (contador == 1) {
+                cor1.style.backgroundColor = corValue;
+                contador ++;
+                console.log(cor.dataset.ncor)
+                resitencia += cor.dataset.ncor;
+            } else if (contador == 2) {
+                cor2.style.backgroundColor = corValue;
+                contador ++;
+                console.log(cor.dataset.ncor)
+                resitencia += cor.dataset.ncor;
+            } else if (contador == 3) {
+                cor3.style.backgroundColor = corValue;
+                contador ++;
+                mult = parseInt(cor.dataset.mult);
+                resistencia = parseInt(resitencia) * mult;
+                const req = document.getElementById('req');
+                req.textContent = `${resistencia}Ω`
+            }
+        })
+    });
+</script>
+</html>
