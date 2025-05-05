@@ -56,10 +56,14 @@
         cor.addEventListener('click',()=>{
             let corValue = cor.dataset.value;
             if (contador == 1) {
-                cor1.style.backgroundColor = corValue;
-                contador ++;
-                console.log(cor.dataset.ncor)
-                resitencia += cor.dataset.ncor;
+                if(corValue == 'black'){
+                    alert('valor inválido')
+                }else{
+                    cor1.style.backgroundColor = corValue;
+                    contador ++;
+                    console.log(cor.dataset.ncor)
+                    resitencia += cor.dataset.ncor;
+                }
             } else if (contador == 2) {
                 cor2.style.backgroundColor = corValue;
                 contador ++;

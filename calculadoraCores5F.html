@@ -22,9 +22,82 @@
         <div id="cormult" class="color"></div>
         <div class="espaco"></div>
         <div class="espaco"></div>
-        <div id="tol2" class="color"></div>
+        <div id="tol" class="color" style="background-color: gold;">+/- 5%</div>
         <div class="resistor2"></div>
         <div class="terminal"></div>
     </div>
+    <h1 id="req"></h1><br>
+    <table id="cores">
+        <tr>
+            <th class="cor" data-value="black" style="background-color: black;" data-ncor="0" data-mult="1">Preto</th>
+            <th class="cor" data-value="rgb(99, 67, 22)" style="background-color: rgb(99, 67, 22);" data-ncor="1" data-mult="10">Marrom</th>
+            <th class="cor" data-value="red" style="background-color: red;" data-ncor="2" data-mult="100">Vermelho</th>
+        </tr>
+        <tr>
+            <th class="cor" data-value="orange" style="background-color: orange;" data-ncor="3" data-mult="1000">Laranja</th>
+            <th class="cor" data-value="yellow" style="background-color: yellow;" data-ncor="4" data-mult="10000">Amarelo</th>
+            <th class="cor" data-value="green" style="background-color: green;" data-ncor="5" data-mult="100000">Verde</th>
+        </tr>
+        <tr>
+            <th class="cor" data-value="blue" style="background-color: blue;" data-ncor="6" data-mult="1000000">Azul</th>
+            <th class="cor" data-value="purple" style="background-color: purple;" data-ncor="7" data-mult="10000000">Violeta</th>
+            <th class="cor" data-value="gray" style="background-color: gray;" data-ncor="8" data-mult="">Cinza</th>
+        </tr>
+        <tr>
+            <th class="cor" data-value="white" style="background-color: white;" data-ncor="9" data-mult="">Branco</th>
+            <th class="cor" data-value="gold" style="background-color: gold;" data-ncor="" data-mult="0.1">Dourado</th>
+            <th class="cor" data-value="silver" style="background-color: silver;" data-ncor="" data-mult="0.01">Prata</th>
+        </tr>
+    </table>
 </body>
+<script>
+    let cores = document.querySelectorAll('#cores  .cor');
+    const cor1 = document.getElementById('cor11');
+    const cor2 = document.getElementById('cor22');
+    const cor3 = document.getElementById('cor33');
+    const cor4 = document.getElementById('cormult')
+    let contador = 1;
+    let resitencia = ''
+    cores.forEach(cor => {
+        cor.addEventListener('click',()=>{
+            let corValue = cor.dataset.value;
+            if(contador == 1){
+                if(corValue == 'black' || corValue == 'gold' || corValue == 'silver'){
+                    alert('valor inválido')
+                }else{
+                    cor1.style.backgroundColor = corValue;
+                    contador ++;
+                    console.log(cor.dataset.ncor)
+                    resitencia += cor.dataset.ncor;
+                }
+            }else if (contador == 2){
+                if(corValue == 'gold' || corValue == 'silver'){
+                    alert('valor inválido')
+                }else{
+                    cor2.style.backgroundColor = corValue;
+                    contador ++;
+                    console.log(cor.dataset.ncor)
+                    resitencia += cor.dataset.ncor;
+                }
+            }else if (contador == 3){
+                if(corValue == 'gold' || corValue == 'silver'){
+                    alert('valor inválido')
+                }else{
+                    cor3.style.backgroundColor = corValue;
+                    contador ++;
+                    console.log(cor.dataset.ncor)
+                    resitencia += cor.dataset.ncor;
+                }
+            }else if(contador == 4){
+                cor4.style.backgroundColor = corValue;
+                contador ++;
+                mult = parseFloat(cor.dataset.mult);
+                console.log(mult)
+                resistencia = parseInt(resitencia) * mult;
+                const req = document.getElementById('req');
+                req.textContent = `${resistencia}Ω`
+            }
+        })
+    });
+</script>
 </html>
